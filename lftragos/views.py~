@@ -337,7 +337,7 @@ def index(request):
 	lista_alineaciones = []
 	if len(lista_jornadas)>1:
 		lista_alineaciones = Alineacion.objects.filter(jornada__numero=lista_jornadas[0].numero).order_by('equipo__id')
-	return render(request,'admin.html')
+	return render(request,'lftragos/admin.html')
 
 @api_view(['GET'])
 def clubs(request):
