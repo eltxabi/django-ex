@@ -305,8 +305,7 @@ def islogged(request):
 	else:
 		return Response({'usuario':request.user.id,'username':request.user.username, 'superuser': 'no'}, status=status.HTTP_202_ACCEPTED)
    else:
-        return Response(
-                {'error':'usuario no autenticado'}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({'error':'usuario no autenticado'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(['GET', 'POST'])
