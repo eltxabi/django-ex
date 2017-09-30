@@ -299,13 +299,13 @@ def printInforme(request,numero):
 
 @api_view(['GET'])
 def islogged(request):
-   if request.user.is_authenticated():
-        if request.user.is_superuser:
-		return Response({'usuario':request.user.id,'username':request.user.username, 'superuser': 'yes'}, status=status.HTTP_202_ACCEPTED)
+	if request.user.is_authenticated():
+		if request.user.is_superuser:
+			return Response({'usuario':request.user.id,'username':request.user.username, 'superuser': 'yes'}, status=status.HTTP_202_ACCEPTED)
+		else:
+			return Response({'usuario':request.user.id,'username':request.user.username, 'superuser': 'no'}, status=status.HTTP_202_ACCEPTED)
 	else:
-		return Response({'usuario':request.user.id,'username':request.user.username, 'superuser': 'no'}, status=status.HTTP_202_ACCEPTED)
-   else:
-        return Response({'error':'usuario no autenticado'}, status=status.HTTP_401_UNAUTHORIZED)
+		return Response({'error':'usuario no autenticado'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(['GET', 'POST'])
