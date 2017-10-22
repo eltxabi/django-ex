@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#dow=$(date +%u)
+#if [ $dow != 4 ]; then
+#   exit
+#fi
+
+rm /sandbox/*.sql
+now=$(date +'%Y-%m-%d'-%H-%M-%S)
+file="$now.sql"
+mysqldump -h $OPENSHIFT_MYSQL_DB_HOST -u $OPENSHIFT_MYSQL_DB_USERNAME --password=$OPENSHIFT_MYSQL_DB_PASSWORD $OPENSHIFT_APP_NAME > /sandbox/$file
+python /sandbox/dropbox
+
+
+
