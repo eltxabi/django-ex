@@ -57,7 +57,7 @@ function AppAdminComponent(equiposService,$scope,$cookies,$timeout) {
 
   ctrl.$onInit = function () {
     equiposService.islogged().then(function(response) {
-      if (response.statusText == "ACCEPTED"){
+      if ((response.statusText == "ACCEPTED") || (response.statusText == "Accepted")){
          ctrl.user_info = response.data;
       }
       console.log(ctrl.user_info)
@@ -72,7 +72,7 @@ function AppAdminComponent(equiposService,$scope,$cookies,$timeout) {
 
   ctrl.createEquipo = function (username, password, dinero, puntos_iniciales){
     equiposService.createEquipo(username, password, dinero, puntos_iniciales).then(function(response) {
-      if (response.statusText == "CREATED"){
+      if ((response.statusText == "CREATED") || (response.statusText == "Created")){
          var message = "Equipo "+ response.data.username+" creado";
       }
       ctrl.messages = message;
@@ -86,7 +86,7 @@ function AppAdminComponent(equiposService,$scope,$cookies,$timeout) {
 
   ctrl.createFutbolista = function (nombre, posicion, club, precio){
     equiposService.postFutbolista(nombre, posicion, club, precio).then(function(response) {
-      if (response.statusText == "CREATED"){
+      if ((response.statusText == "CREATED") || (response.statusText == "Created")){
          var message = "Futbolista "+ response.data.nombre+" creado";
       }
       ctrl.messages = message;
@@ -135,7 +135,7 @@ function AppAdminComponent(equiposService,$scope,$cookies,$timeout) {
 
   ctrl.createJornada = function (numero, limite){
     equiposService.createJornada(numero, limite).then(function(response) {
-      if (response.statusText == "CREATED"){
+      if ((response.statusText == "CREATED") || (response.statusText == "Created")){
          var message = "Jornada "+ response.data.numero+" creada";
       }
       ctrl.messages = message;
@@ -149,7 +149,7 @@ function AppAdminComponent(equiposService,$scope,$cookies,$timeout) {
 
   ctrl.enviarAlineacion = function (equipo,jornada,futbolistas){
     equiposService.postAlineacion(equipo,jornada,futbolistas).then(function(response) {
-      if (response.statusText == "CREATED"){
+      if ((response.statusText == "CREATED") || (response.statusText == "Created")){
          var message = "Alineacion de "+equipo +" guardada";
       }
       ctrl.messages = message;
@@ -162,7 +162,7 @@ function AppAdminComponent(equiposService,$scope,$cookies,$timeout) {
 
   ctrl.enviarPuntos = function(jornada,alineados){
   equiposService.postPuntos(jornada,alineados).then(function(response) {
-      if (response.statusText == "CREATED"){
+      if ((response.statusText == "CREATED") || (response.statusText == "Created")){
          var message = "Puntos guardados";
       }
       ctrl.messages = message;
@@ -176,7 +176,7 @@ function AppAdminComponent(equiposService,$scope,$cookies,$timeout) {
 
   ctrl.userlogin = function(username,password){
   equiposService.postlogin(username,password).then(function(response) {
-      if (response.statusText == "ACCEPTED"){
+      if ((response.statusText == "ACCEPTED") || (response.statusText == "Accepted")){
          ctrl.user_info = response.data
          $('#loginModal').modal('hide')
       }
